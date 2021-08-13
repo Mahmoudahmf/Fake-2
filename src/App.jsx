@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
+import { Route } from "react-router-dom";
 
 import ShoppingCart from "./ShoppingCart";
+import About from "./about";
+import Contact from "./contact";
+import Home from "./home";
+import productDetails from "./productDetails";
 
 class App extends Component {
   state = {
@@ -38,14 +43,41 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar></Navbar>
+        <Navbar
+          productCount={this.state.products.filter((p) => p.num > 0).length}
+        ></Navbar>
         <main className="container">
-          <ShoppingCart
+          <Route
+            path="/productDetails/:id"
+            render={(props) => (
+              <productDetails
+                products={this.state.products}
+                {...props}
+              ></productDetails>
+            )}
+          ></Route>
+
+          <Route
+            path="/cart"
+            render={(props) => (
+              <ShoppingCart
+                products={this.state.products}
+                onDelete={this.deleteHandel}
+                onRest={this.restHandel}
+                onIncreament={this.increament}
+                {...props}
+              ></ShoppingCart>
+            )}
+          ></Route>
+          <Route path="/about" component={About}></Route>
+          <Route path="/contact" component={Contact}></Route>
+          <Route path="/home" component={Home}></Route>
+          {/* <ShoppingCart
             products={this.state.products}
             onDelete={this.deleteHandel}
             onRest={this.restHandel}
             onIncreament={this.increament}
-          ></ShoppingCart>
+          ></ShoppingCart> */}
         </main>
       </React.Fragment>
     );

@@ -4,13 +4,19 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
+import {BrowserRouter} from 'react-router-dom'
 
 
 
-import ShoppingCart from './shoppingCart';
+
+import App from './App';
 
 ReactDOM.render(
-  <ShoppingCart></ShoppingCart>,
+<BrowserRouter>
+   <App>
+     
+   </App>
+</BrowserRouter>,
   document.getElementById('root')
 );
 
