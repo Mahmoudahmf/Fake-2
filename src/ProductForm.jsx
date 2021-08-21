@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { axios } from "axios";
 class ProductForm extends Component {
-  state = { name: "", Price: "" };
+  state = { name: " ", Price: " " };
 
   handelSubmit = async (e) => {
     e.preventDefault();
     const obj = { ...this.state, isInCart: false, num: 0 };
-    await axios.Post("http://localhost:3000/products/", obj);
+    await axios.post("http://localhost:3000/products/", obj);
 
     // when i click add it must go to admin component
-    this.props.history.replace("/Admin");
+    this.props.history.push("/Admin");
     console.log("Submited");
   };
 
@@ -17,8 +17,10 @@ class ProductForm extends Component {
     let state = { ...this.state };
 
     state[e.currentTarget.name] = e.currentTarget.value;
+    //console.log(e.currentTarget.name);
+    //console.log(e.currentTarget.value);
 
-    this.setState({ state });
+    this.setState(state);
   };
   render() {
     return (

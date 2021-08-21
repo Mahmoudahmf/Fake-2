@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 class Admin extends Component {
   render() {
-    const { Products, onDelete } = this.props;
+    const { products, onDelete } = this.props;
     return (
       <React.Fragment>
         <h1>Admin</h1>
@@ -9,7 +9,6 @@ class Admin extends Component {
           onClick={() => this.props.history.push("/ProductForm/new")}
           className="btn btn-primary"
         >
-          {" "}
           Add
         </button>
         <table className="table">
@@ -22,8 +21,8 @@ class Admin extends Component {
             </tr>
           </thead>
           <tbody>
-            {Products &&
-              Products.map((product) => (
+            {products &&
+              products.map((product) => (
                 <tr key={product.id}>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
