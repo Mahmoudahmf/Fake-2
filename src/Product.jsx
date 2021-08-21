@@ -25,7 +25,10 @@ class Product extends Component {
           >
             +
           </button>
-          <span onClick={() => this.props.delete(this.props.product)}>
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={() => this.props.delete(this.props.product)}
+          >
             <i className="fas fa-trash m-2"></i>
           </span>
         </div>
