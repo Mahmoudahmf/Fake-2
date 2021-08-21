@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Product extends Component {
   //state = {
@@ -12,7 +13,9 @@ class Product extends Component {
       <div className="row">
         {/* {this.props.children} */}
         <div className="col-2">
-          <span>{this.props.product.name}</span>
+          <Link to={`ProductDetails/${this.props.product.id}`}>
+            {this.props.product.name}
+          </Link>
         </div>
         <div className="col">
           <span className="grade grade-success">{this.props.product.num}</span>

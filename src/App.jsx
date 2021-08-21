@@ -6,7 +6,7 @@ import ShoppingCart from "./ShoppingCart";
 import About from "./about";
 import Contact from "./contact";
 import Home from "./home";
-import productDetails from "./productDetails";
+import ProductDetails from "./productDetails";
 
 class App extends Component {
   state = {
@@ -48,12 +48,12 @@ class App extends Component {
         ></Navbar>
         <main className="container">
           <Route
-            path="/productDetails/:id"
+            path="/ProductDetails/:id"
             render={(props) => (
-              <productDetails
+              <ProductDetails
                 products={this.state.products}
                 {...props}
-              ></productDetails>
+              ></ProductDetails>
             )}
           ></Route>
 
