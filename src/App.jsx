@@ -24,9 +24,10 @@ class App extends Component {
     this.setState({ products: data });
   }
 
-  deleteHandel = (product) => {
-    const newProduct = this.state.products.filter((p) => p.id !== product.id);
-    this.setState({ products: newProduct });
+  deleteHandel = async (product) => {
+    await axios.delete("http://localhost:3000/products/" + product.id);
+    const products = this.state.products.filter((p) => p.id !== product.id);
+    this.setState({ products });
   };
 
   restHandel = () => {
@@ -96,13 +97,18 @@ class App extends Component {
           <Route path="/Login" component={Login}></Route>
           <Route path="/ProductForm/:id" component={ProductForm}></Route>
 
-          <Route path="/Admin" render={props =>(<Admin
-           {...props}
-           products={this.state.products}
-            onDelete={this.handelDelete}
-             onEdit={this.handelEdit}/>)}>
-
-          </Route>
+          <Route
+            path="/Admin"
+            render={(props) => (
+              <Admin
+                {...props}
+                products={this.state.products}
+                onDelete={this.deleteHandel}
+                onEdit={this.handelEdit}
+              />
+            )}
+          ></Route>
+          
           {/* <ShoppingCart
             products={this.state.products}
             onDelete={this.deleteHandel}

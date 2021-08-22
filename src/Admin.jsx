@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import axios from "axios";
 class Admin extends Component {
   render() {
-    const { products, onDelete } = this.props;
+    const { products } = this.props;
     return (
       <React.Fragment>
         <h1>Admin</h1>
@@ -25,7 +26,7 @@ class Admin extends Component {
               products.map((product) => (
                 <tr key={product.id}>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>{product.Price}</td>
                   <td>
                     <i
                       onClick={() =>
@@ -36,7 +37,7 @@ class Admin extends Component {
                   </td>
                   <td>
                     <i
-                      onClick={() => onDelete(product)}
+                      onClick={() => this.Props.onDelete(product)}
                       className="fas fa-trash"
                     ></i>
                   </td>
